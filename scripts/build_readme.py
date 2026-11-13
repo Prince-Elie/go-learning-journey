@@ -237,6 +237,7 @@ def main():
         f"| Learning exercises | `{progress_bar(learning_done, learning_total)}` |",
         f"| Concepts unlocked | `{progress_bar(len(concepts_done & set(order)), len(order))}` |",
         f"| Practice exercises solved | **{practice_done}** |",
+        f"| All exercises | `{progress_bar(len(solved), len(catalog))}` |",
         f"| Last update | {date.today().isoformat()} |", "",
         "## Next up", "",
     ]
