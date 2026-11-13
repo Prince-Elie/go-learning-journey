@@ -16,6 +16,7 @@ Solutions are synced automatically from Exercism; everything below is generated.
 | Learning exercises | `██░░░░░░░░░░░░░░░░░░ 3/30` |
 | Concepts unlocked | `██░░░░░░░░░░░░░░░░░░ 4/37` |
 | Practice exercises solved | **2** |
+| All exercises | `█░░░░░░░░░░░░░░░░░░░ 5/169` |
 | Last update | 2026-11-13 |
 
 ## Next up
