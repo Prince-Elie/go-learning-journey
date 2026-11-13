@@ -1,0 +1,92 @@
+name: Sync & document
+
+on:
+  # the Exercism syncer bot opens a PR for each iteration
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+  # your own pushes (e.g. editing the MANUAL section of the README)
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "concepts/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-and-document
+  cancel-in-progress: false
+
+env:
+  # commits are authored by the repo owner (GitHub's private no-reply address),
+  # so they count in your contribution graph and no bot shows up as contributor
+  AUTHOR_NAME: ${{ github.repository_owner }}
+  AUTHOR_EMAIL: ${{ github.repository_owner_id }}+${{ github.repository_owner }}@users.noreply.github.com
+
+jobs:
+  sync:
+    if: >
+      github.event_name != 'pull_request_target' ||
+      startsWith(github.event.pull_request.user.login, 'exercism-solutions-syncer')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Configure author
+        run: |
+          git config user.name  "$AUTHOR_NAME"
+          git config user.email "$AUTHOR_EMAIL"
+
+      # Copy only the files the bot changed. Nothing from the PR is executed.
+      - name: Import the synced solution
+        if: github.event_name == 'pull_request_target'
+        id: import
+        env:
+          PR: ${{ github.event.pull_request.number }}
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          git fetch origin "pull/$PR/head:syncer-pr"
+          BASE=$(git merge-base main syncer-pr)
+          git diff --name-status "$BASE" syncer-pr | while IFS=$'\t' read -r status path rest; do
+            case "$status" in
+              D)  git rm -q --ignore-unmatch -- "$path" ;;
+              R*) git rm -q --ignore-unmatch -- "$path"; git checkout syncer-pr -- "$rest" ;;
+              *)  git checkout syncer-pr -- "$path" ;;
+            esac
+          done
+          MSG=$(python3 scripts/commit_message.py "$TITLE")
+          echo "msg=$MSG" >> "$GITHUB_OUTPUT"
+
+      - name: Build docs
+        run: python3 scripts/build_readme.py
+
+      - name: Commit & push
+        env:
+          MSG: "${{ steps.import.outputs.msg || 'docs: update progress' }}"
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"
+          else
+            git commit -m "$MSG"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Close the syncer PR
+        if: github.event_name == 'pull_request_target'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr close ${{ github.event.pull_request.number }} --repo ${{ github.repository }} \
+            --comment "Imported into main and documented ✅" --delete-branch
