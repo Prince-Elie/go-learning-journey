@@ -15,24 +15,24 @@ Solutions are synced automatically from Exercism; everything below is generated.
 |---|---|
 | Learning exercises | `██░░░░░░░░░░░░░░░░░░ 3/30` |
 | Concepts unlocked | `██░░░░░░░░░░░░░░░░░░ 4/37` |
-| Practice exercises solved | **2** |
-| All exercises | `█░░░░░░░░░░░░░░░░░░░ 5/169` |
-| Last update | 2026-11-13 |
+| Practice exercises solved | **3** |
+| All exercises | `█░░░░░░░░░░░░░░░░░░░ 6/169` |
+| Last update | 2026-11-14 |
 
 ## Next up
 
 - 📘 **Welcome To Tech Palace!** — learning `strings`
 - 📘 **Weather Forecast** — learning `comments`
-- 🛠️ Two Fer — practice
 - 🛠️ Leap — practice
 - 🛠️ Difference of Squares — practice
+- 🛠️ ISBN Verifier — practice
 
 ## Solutions by concept
 
 | # | Concept | Exercises |
 |---|---|---|
 | 1 | [First steps](./concepts/_first-steps.md) | 🛠️ [Hello World](./solutions/go/hello-world) |
-| 2 | [Basics](./concepts/basics.md) | 📘 [Gopher's Gorgeous Lasagna](./solutions/go/lasagna) |
+| 2 | [Basics](./concepts/basics.md) | 📘 [Gopher's Gorgeous Lasagna](./solutions/go/lasagna), 🛠️ [Two Fer](./solutions/go/two-fer) |
 | 3 | [Booleans](./concepts/booleans.md) | 📘 [Annalyn's Infiltration](./solutions/go/annalyns-infiltration), 🛠️ [Raindrops](./solutions/go/raindrops) |
 | 4 | [Arithmetic Operators](./concepts/arithmetic-operators.md) | 📘 [Cars Assemble](./solutions/go/cars-assemble) |
 
@@ -40,6 +40,7 @@ Solutions are synced automatically from Exercism; everything below is generated.
 
 ## Journal
 
+- `2026-11-14` — Two Fer
 - `2026-11-13` — Raindrops
 - `2026-11-13` — Gopher's Gorgeous Lasagna
 - `2026-11-13` — Hello World
@@ -56,7 +57,8 @@ Solutions are synced automatically from Exercism; everything below is generated.
         ├── cars-assemble/
         ├── hello-world/
         ├── lasagna/
-        └── raindrops/
+        ├── raindrops/
+        └── two-fer/
 ```
 
 ---
