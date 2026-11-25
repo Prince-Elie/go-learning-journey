@@ -15,15 +15,14 @@ Solutions are synced automatically from Exercism; everything below is generated.
 |---|---|
 | Learning exercises | `██░░░░░░░░░░░░░░░░░░ 3/30` |
 | Concepts unlocked | `██░░░░░░░░░░░░░░░░░░ 4/37` |
-| Practice exercises solved | **4** |
-| All exercises | `█░░░░░░░░░░░░░░░░░░░ 7/169` |
-| Last update | 2026-11-14 |
+| Practice exercises solved | **5** |
+| All exercises | `█░░░░░░░░░░░░░░░░░░░ 8/169` |
+| Last update | 2026-11-25 |
 
 ## Next up
 
 - 📘 **Welcome To Tech Palace!** — learning `strings`
 - 📘 **Weather Forecast** — learning `comments`
-- 🛠️ Difference of Squares — practice
 - 🛠️ ISBN Verifier — practice
 
 ## Solutions by concept
@@ -33,12 +32,13 @@ Solutions are synced automatically from Exercism; everything below is generated.
 | 1 | [First steps](./concepts/_first-steps.md) | 🛠️ [Hello World](./solutions/go/hello-world) |
 | 2 | [Basics](./concepts/basics.md) | 📘 [Gopher's Gorgeous Lasagna](./solutions/go/lasagna), 🛠️ [Leap](./solutions/go/leap), 🛠️ [Two Fer](./solutions/go/two-fer) |
 | 3 | [Booleans](./concepts/booleans.md) | 📘 [Annalyn's Infiltration](./solutions/go/annalyns-infiltration), 🛠️ [Raindrops](./solutions/go/raindrops) |
-| 4 | [Arithmetic Operators](./concepts/arithmetic-operators.md) | 📘 [Cars Assemble](./solutions/go/cars-assemble) |
+| 4 | [Arithmetic Operators](./concepts/arithmetic-operators.md) | 📘 [Cars Assemble](./solutions/go/cars-assemble), 🛠️ [Difference of Squares](./solutions/go/difference-of-squares) |
 
 📘 learning exercise · 🛠️ practice exercise
 
 ## Journal
 
+- `2026-11-25` — Difference of Squares
 - `2026-11-14` — Two Fer
 - `2026-11-14` — Leap
 - `2026-11-13` — Raindrops
@@ -55,6 +55,7 @@ Solutions are synced automatically from Exercism; everything below is generated.
     └── go/
         ├── annalyns-infiltration/
         ├── cars-assemble/
+        ├── difference-of-squares/
         ├── hello-world/
         ├── lasagna/
         ├── leap/
